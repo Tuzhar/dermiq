@@ -70,7 +70,7 @@ const Spinner = ({text, sub}) => (
 );
 
 // ─── API HELPER ───────────────────────────────────────────────────
-const GROQ_KEY = process.env.API_KEY; // set this in your environment variables to call the API
+const GROQ_KEY = import.meta.env.VITE_API_KEY;
 const callClaude = async (prompt) => {
   const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method:"POST",
