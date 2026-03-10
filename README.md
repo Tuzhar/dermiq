@@ -6,6 +6,8 @@ AI-powered skincare analysis web app.
 - Skin concern questionnaire
 - AI-powered skincare recommendations
 - Clean React UI
+- hyperpersonalised routines
+- selection of suited products
 
 ## Tech Stack
 - React
@@ -14,8 +16,5 @@ AI-powered skincare analysis web app.
 - Vercel deployment
 
 ## Live Demo
-https://your-vercel-link
+https://dermiq-seven.vercel.app/
 
-## Setup
-npm install
-npm run dev
