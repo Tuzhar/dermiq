@@ -18,3 +18,10 @@ AI-powered skincare analysis web app.
 ## Live Demo
 https://dermiq-seven.vercel.app/
 
+## Installation
+
+git clone https://github.com/Tuzhar/dermiq.git
+cd dermiq
+npm install
+npm run dev
+
