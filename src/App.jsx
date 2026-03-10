@@ -26,7 +26,7 @@ const css = `
   .pulse{animation:pulse 1.8s ease infinite;}
 `;
 
-// ─── SHARED COMPONENTS ───────────────────────────────────────────
+
 const Pill = ({label, active, onClick, danger}) => (
   <button onClick={onClick} style={{
     background: active?(danger?C.danger:C.text):"transparent",
@@ -69,7 +69,7 @@ const Spinner = ({text, sub}) => (
   </div>
 );
 
-// ─── API HELPER ───────────────────────────────────────────────────
+// API stuff 
 const GROQ_KEY = import.meta.env.VITE_API_KEY;
 const callClaude = async (prompt) => {
   const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -92,7 +92,7 @@ const ROUTINE_SHAPE = `{
   "proTips":["","",""]
 }`;
 
-// ─── PRODUCT CARD ─────────────────────────────────────────────────
+
 function ProductCard({product, badge, badgeColor=C.gold}) {
   const [simpMode, setSimpMode] = useState(false);
   const [simpText, setSimpText] = useState("");
@@ -144,7 +144,7 @@ function ProductCard({product, badge, badgeColor=C.gold}) {
   );
 }
 
-// ─── NATURAL SOLUTIONS ────────────────────────────────────────────
+// natural sols
 function NaturalTab({concerns, goals}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -192,7 +192,7 @@ Give 5 natural home remedies. Return ONLY valid JSON:
   );
 }
 
-// ─── FIND PRODUCTS ────────────────────────────────────────────────
+// find products
 function FindProducts() {
   const [productName, setProductName] = useState("");
   const [budget, setBudget] = useState("");
@@ -278,7 +278,7 @@ Return ONLY valid JSON:
   );
 }
 
-// ─── ROUTINE SECTION ──────────────────────────────────────────────
+
 function RoutineSection({skinType, concerns, goals, budgetStr, totalBudgetStr, avoid}) {
   const [routineMode, setRoutineMode] = useState("full");
   const [fullResults, setFullResults] = useState(null);
@@ -291,7 +291,7 @@ function RoutineSection({skinType, concerns, goals, budgetStr, totalBudgetStr, a
 
   const profile = `Skin Type: ${skinType}, Concerns: ${concerns.join(", ")}, Goals: ${goals.join(", ")}, Budget per product: ${budgetStr}, Total routine budget cap: ${totalBudgetStr}, Avoid: ${avoid.length>0?avoid.join(", "):"Nothing"}. Products must be available in India. Keep individual products within the per-product budget AND keep the total routine cost within the total budget cap.`;
 
-  // Fetch full routine on mount
+  // Fetch full routine
   useState(() => {
     (async () => {
       try {
@@ -464,7 +464,7 @@ Return ONLY valid JSON (same format, but only 2-3 items in routine array): ${ROU
   );
 }
 
-// ─── MAIN APP ─────────────────────────────────────────────────────
+// main app
 export default function DermIQ() {
   const [view, setView] = useState("home");
   const [quizStep, setQuizStep] = useState(0);
@@ -476,7 +476,7 @@ export default function DermIQ() {
   const [totalBudget, setTotalBudget] = useState("");
   const [customTotalBudget, setCustomTotalBudget] = useState("");
   const [avoid, setAvoid] = useState([]);
-  const [submitted, setSubmitted] = useState(false); // triggers results mount
+  const [submitted, setSubmitted] = useState(false); // triggers results 
   const topRef = useRef(null);
 
   const toggle = (arr, setArr, val) => setArr(p=>p.includes(val)?p.filter(x=>x!==val):[...p,val]);
@@ -484,7 +484,7 @@ export default function DermIQ() {
   const totalBudgetStr = totalBudget==="Custom"?`₹${customTotalBudget}`:totalBudget;
 
   const submit = () => {
-    setSubmitted(false); // reset first so RoutineSection remounts fresh
+    setSubmitted(false); // reset first so routineSection remounts fresh
     setTimeout(() => {
       setSubmitted(true);
       setView("results");
